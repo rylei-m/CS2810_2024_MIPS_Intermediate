@@ -1,7 +1,8 @@
 .data
     prompt: .asciiz "Enter A Number: "
     newline: .asciiz "\n"
-    done: .asciiz "program is done \n"
+    done: .asciiz "\n"
+    too_big: .asciiz "Input Too Big. Range is 0-46 \n"
 
 .text
     .globl main
@@ -52,7 +53,7 @@ main:
     li $t5, 46
     ble $t0, $t5, fibanacciLoop
     li $v0, 4
-    la $a0, done
+    la $a0, too_big
     syscall
 
     li $v0, 10

@@ -1,7 +1,7 @@
 .data
     prompt: .asciiz "Enter A Number: "
     newline: .asciiz "\n"
-    done: "program is done \n"
+    done: .asciiz "program is done \n"
 
 .text
     .globl main
@@ -46,6 +46,17 @@ main:
 
     # 2 loop
     li $t3, 2
+
+    # error handling
+    # input maximum
+    li $t5, 46
+    ble $t0, $t5, fibanacciLoop
+    li $v0, 4
+    la $a0, done
+    syscall
+
+    li $v0, 10
+    syscall
 
 fibanacciLoop:
     # i = i-1 + i-2

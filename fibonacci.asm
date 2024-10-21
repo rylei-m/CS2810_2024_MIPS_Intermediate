@@ -48,4 +48,22 @@ main:
     li $t3, 2
 
 fibanacciLoop:
-    
+    # i = i-1 + i-2
+    add $t4, $t1, $t2
+
+    li $v0, 1
+    move $a0, $t4
+    syscall
+
+    li $v0, 4
+    la $a0, newline
+    syscall
+
+    move $t1, $t2
+    move $t2, $t4
+
+    addi $t3, $t3, 1
+
+    # if i < n cont
+    blt $t3, $t0, fibanacciLoop
+

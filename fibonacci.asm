@@ -67,3 +67,10 @@ fibanacciLoop:
     # if i < n cont
     blt $t3, $t0, fibanacciLoop
 
+exit_program:
+    li $v0, 4
+    la $a0, done
+    syscall
+
+    li $v0, 10
+    syscall
